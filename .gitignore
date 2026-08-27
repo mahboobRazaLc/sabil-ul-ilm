@@ -1,0 +1,7 @@
+# Ignore local runtime artifacts and credentials
+node_modules
+.next
+.env
+.env.local
+.env.production
+public/uploads

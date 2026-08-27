@@ -1,0 +1,123 @@
+   ▲ Next.js 15.5.23
+   - Local:        http://localhost:3099
+   - Network:      http://192.168.1.6:3099
+   - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 4.7s
+ ○ Compiling / ...
+ ✓ Compiled / in 9.9s (846 modules)
+ GET / 200 in 11636ms
+ GET / 200 in 602ms
+ ○ Compiling /middleware ...
+ ✓ Compiled /middleware in 2.6s (234 modules)
+ ○ Compiling /register ...
+ ✓ Compiled /register in 1722ms (835 modules)
+ GET /register 200 in 2466ms
+ GET /register 200 in 123ms
+ ○ Compiling /login ...
+ ✓ Compiled /login in 1105ms (855 modules)
+ GET /login 200 in 1564ms
+ ○ Compiling /api/auth/[...nextauth] ...
+ ✓ Compiled /api/auth/[...nextauth] in 1078ms (863 modules)
+ GET /api/auth/providers 200 in 3523ms
+ GET /api/auth/csrf 200 in 61ms
+ POST /api/auth/callback/credentials? 200 in 283ms
+ GET /api/auth/session 200 in 58ms
+ ○ Compiling /dashboard ...
+ ✓ Compiled /dashboard in 1068ms (866 modules)
+ GET /dashboard 200 in 2290ms
+ POST /dashboard 303 in 107ms
+ GET / 200 in 443ms
+ GET /login 200 in 102ms
+ GET / 200 in 159ms
+ ○ Compiling /questions ...
+ ✓ Compiled /questions in 1513ms (862 modules)
+ GET /questions 200 in 2350ms
+ GET /questions?notice=Your+question+was+received.+An+educator+will+respond+soon. 200 in 195ms
+ POST /questions 303 in 358ms
+ GET /questions?notice=Your+question+was+received.+An+educator+will+respond+soon. 200 in 266ms
+ GET /questions?notice=Your+question+was+received.+An+educator+will+respond+soon. 200 in 153ms
+ GET /questions?notice=Your%20question%20was%20received.%20An%20educator%20will%20respond%20soon. 200 in 675ms
+ GET /login 200 in 119ms
+ ○ Compiling /api/auth/[...nextauth] ...
+ ✓ Compiled /api/auth/[...nextauth] in 867ms (633 modules)
+ GET /api/auth/providers 200 in 1380ms
+ GET /api/auth/csrf 200 in 54ms
+ POST /api/auth/callback/credentials? 200 in 268ms
+ GET /api/auth/session 200 in 64ms
+ GET /dashboard 200 in 797ms
+ GET /dashboard?notice=Your+question+was+received.+An+educator+will+respond+soon. 200 in 223ms
+ POST /dashboard 303 in 441ms
+ GET /dashboard?notice=Your+question+was+received.+An+educator+will+respond+soon. 200 in 233ms
+ GET /dashboard?notice=Your+question+was+received.+An+educator+will+respond+soon. 200 in 241ms
+ POST /dashboard?notice=Your%20question%20was%20received.%20An%20educator%20will%20respond%20soon. 303 in 86ms
+ GET / 200 in 567ms
+ GET /login 200 in 99ms
+ GET /api/auth/providers 200 in 70ms
+ GET /api/auth/csrf 200 in 48ms
+ POST /api/auth/callback/credentials? 200 in 222ms
+ GET /api/auth/session 200 in 62ms
+ ○ Compiling /admin/dashboard ...
+ ✓ Compiled /admin/dashboard in 1977ms (873 modules)
+ GET /admin/dashboard 200 in 3093ms
+ ○ Compiling /admin/classes ...
+ ✓ Compiled /admin/classes in 1096ms (876 modules)
+ GET /admin/classes 200 in 1581ms
+ GET /admin/classes?notice=Class+saved+successfully. 200 in 238ms
+ POST /admin/classes 303 in 532ms
+ GET /admin/classes?notice=Class+saved+successfully. 200 in 195ms
+ GET /admin/classes?notice=Class+saved+successfully. 200 in 174ms
+ GET /admin/dashboard 200 in 184ms
+ ○ Compiling /admin/audit-logs ...
+ ✓ Compiled /admin/audit-logs in 1484ms (866 modules)
+ GET /admin/audit-logs 200 in 2096ms
+ ○ Compiling / ...
+ ✓ Compiled / in 1381ms (622 modules)
+ GET / 200 in 2782ms
+ ○ Compiling /library ...
+ ✓ Compiled /library in 1240ms (857 modules)
+ GET /library?class=edadiya 200 in 1960ms
+ GET /library 200 in 160ms
+ ○ Compiling /videos ...
+ ✓ Compiled /videos in 1037ms (856 modules)
+ GET /videos 200 in 1394ms
+ GET /admin/dashboard 200 in 194ms
+ GET /admin/classes 200 in 406ms
+ GET / 200 in 623ms
+ ○ Compiling /videos/[id] ...
+ ✓ Compiled /videos/[id] in 1632ms (857 modules)
+ GET /videos/cmt5f3wzl0003uyowbloof6mb 200 in 4432ms
+ GET /videos 200 in 193ms
+ GET /admin/dashboard 200 in 244ms
+ GET /admin/classes 200 in 192ms
+ ○ Compiling /admin/books ...
+ ✓ Compiled /admin/books in 2.3s (864 modules)
+ GET /admin/books 200 in 3029ms
+ ○ Compiling /admin/videos ...
+ ✓ Compiled /admin/videos in 1252ms (866 modules)
+ GET /admin/videos 200 in 1778ms
+ GET /admin/books 200 in 163ms
+ GET /admin/videos 200 in 145ms
+ ○ Compiling /admin/subjects ...
+ ✓ Compiled /admin/subjects in 1797ms (863 modules)
+ GET /admin/subjects 200 in 2490ms
+ GET /admin/classes 200 in 177ms
+ GET / 200 in 695ms
+ ○ Compiling /library ...
+ ✓ Compiled /library in 1000ms (624 modules)
+ GET /library?class=edadiya 200 in 1665ms
+ ○ Compiling /admin/dashboard ...
+ ✓ Compiled /admin/dashboard in 1049ms (625 modules)
+ GET /admin/dashboard 200 in 1579ms
+ GET /admin/videos 200 in 222ms
+ ○ Compiling / ...
+ ✓ Compiled / in 1844ms (620 modules)
+ GET / 200 in 3489ms
+ ✓ Compiled in 958ms (618 modules)
+ ○ Compiling /admin/videos ...
+ ✓ Compiled /admin/videos in 1481ms (620 modules)
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 6.4s (1205 modules)
+ GET /admin/videos 500 in 18963ms
+ GET /admin/videos 500 in 850ms

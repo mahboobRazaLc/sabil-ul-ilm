@@ -1,0 +1,202 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  EDITOR
+  STUDENT
+}
+
+enum PublishStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum MediaType {
+  PDF
+  COVER
+  THUMBNAIL
+}
+
+enum QuestionStatus {
+  OPEN
+  ANSWERED
+  ARCHIVED
+}
+
+enum ProgressStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
+}
+
+model User {
+  id           String             @id @default(cuid())
+  name         String?
+  email        String             @unique
+  passwordHash String
+  role         Role               @default(STUDENT)
+  classId      String?
+  class        Class?             @relation(fields: [classId], references: [id], onDelete: SetNull)
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+  questions    StudentQuestion[]  @relation("QuestionAuthor")
+  answers      StudentQuestion[]  @relation("QuestionAnswerer")
+  notifications Notification[]
+  auditLogs    AuditLog[]
+  progress     LearningProgress[]
+}
+
+model Class {
+  id          String        @id @default(cuid())
+  name        String
+  slug        String        @unique
+  description String?
+  status      PublishStatus @default(DRAFT)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  subjects    Subject[]
+  books       Book[]
+  students    User[]
+}
+
+model Subject {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String
+  classId   String
+  class     Class    @relation(fields: [classId], references: [id], onDelete: Cascade)
+  books     Book[]
+
+  @@unique([classId, slug])
+}
+
+model Book {
+  id          String             @id @default(cuid())
+  title       String
+  slug        String             @unique
+  description String?
+  coverUrl    String?
+  status      PublishStatus      @default(DRAFT)
+  classId     String
+  subjectId   String?
+  class       Class              @relation(fields: [classId], references: [id], onDelete: Cascade)
+  subject     Subject?           @relation(fields: [subjectId], references: [id], onDelete: SetNull)
+  assets      MediaAsset[]
+  videos      Video[]
+  questions   StudentQuestion[]
+  progress    LearningProgress[]
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+}
+
+model MediaAsset {
+  id         String    @id @default(cuid())
+  type       MediaType
+  fileName   String
+  storageKey String    @unique
+  mimeType   String
+  sizeBytes  Int
+  bookId     String?
+  book       Book?     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  createdAt  DateTime  @default(now())
+}
+
+model Video {
+  id          String             @id @default(cuid())
+  title       String
+  url         String
+  description String?
+  thumbnail   String?
+  fileName    String?
+  storageKey  String?            @unique
+  mimeType    String?
+  sizeBytes   Int?
+  status      PublishStatus      @default(DRAFT)
+  bookId      String?
+  book        Book?              @relation(fields: [bookId], references: [id], onDelete: SetNull)
+  progress    LearningProgress[]
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+}
+
+model StudentQuestion {
+  id         String         @id @default(cuid())
+  name       String?
+  email      String?
+  question   String
+  answer     String?
+  status     QuestionStatus @default(OPEN)
+  bookId     String?
+  book       Book?          @relation(fields: [bookId], references: [id], onDelete: SetNull)
+  authorId   String?
+  answererId String?
+  author     User?          @relation("QuestionAuthor", fields: [authorId], references: [id], onDelete: SetNull)
+  answerer   User?          @relation("QuestionAnswerer", fields: [answererId], references: [id], onDelete: SetNull)
+  notifications Notification[]
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
+}
+
+model LearningProgress {
+  id             String         @id @default(cuid())
+  userId         String
+  user           User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bookId         String?
+  book           Book?          @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  videoId        String?
+  video          Video?         @relation(fields: [videoId], references: [id], onDelete: Cascade)
+  status         ProgressStatus @default(IN_PROGRESS)
+  lastAccessedAt DateTime       @default(now())
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  @@unique([userId, bookId])
+  @@unique([userId, videoId])
+}
+
+model Notification {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  questionId String?
+  question   StudentQuestion? @relation(fields: [questionId], references: [id], onDelete: SetNull)
+  type       String   @default("QUESTION_ANSWER")
+  targetUrl  String?
+  message    String
+  read       Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  @@index([userId, read])
+  @@index([userId, type, targetUrl])
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  action    String
+  entity    String
+  entityId  String
+  metadata  Json?
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  createdAt DateTime @default(now())
+}
+
+model Note {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  pdfUrl      String
+  pdfFileName String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
