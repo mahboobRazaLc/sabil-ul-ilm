@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { Noto_Nastaliq_Urdu, Noto_Sans_Arabic, Amiri } from "next/font/google";
+import { Noto_Nastaliq_Urdu, Noto_Sans_Arabic, Amiri, Playfair_Display } from "next/font/google";
 import { NavigationLoader } from "@/components/navigation-loader";
 import "./globals.css";
 
@@ -25,6 +25,13 @@ const amiri = Amiri({
   display: "swap",
 });
 
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["700", "800", "900"],
+  variable: "--font-playfair",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Sabeel-ul-Ilm — Dars-e-Nizami Online",
   description: "A premium Islamic learning platform for Dars-e-Nizami students. Access curriculum classes, video lessons, PDF resources, and teacher support.",
@@ -36,7 +43,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${notoNastaliqUrdu.variable} ${notoSansArabic.variable} ${amiri.variable}`}>
+      <body className={`${notoNastaliqUrdu.variable} ${notoSansArabic.variable} ${amiri.variable} ${playfair.variable}`}>
         <Suspense fallback={null}>
           <NavigationLoader />
         </Suspense>

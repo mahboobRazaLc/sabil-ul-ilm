@@ -8697,10 +8697,11 @@ textarea {
   gap: 6px;
 }
 .hp-hero-brand {
+  font-family: var(--font-playfair), "Playfair Display", Georgia, serif;
   font-size: clamp(36px, 5.5vw, 58px);
   font-weight: 800;
   color: #fff;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   line-height: 1.1;
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
 }
