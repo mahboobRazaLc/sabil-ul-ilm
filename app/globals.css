@@ -8968,14 +8968,19 @@ textarea {
 
 /* ── CTA Card (Ask Teacher) ──────────────────── */
 .hp-cta-card {
-  background: linear-gradient(135deg, #0a2e1c 0%, #0f5132 50%, #145a3a 100%);
+  background: rgba(15, 81, 50, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-radius: var(--radius-xl);
   padding: 48px 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 32px;
-  border: 1px solid rgba(212, 160, 23, 0.12);
+  border: 1px solid rgba(212, 160, 23, 0.15);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 .hp-cta-content {
   display: flex;
@@ -9027,11 +9032,15 @@ textarea {
   display: flex;
   gap: 48px;
   align-items: center;
-  background: #fff;
-  border: 1px solid var(--border-light);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-xl);
   padding: 48px;
-  box-shadow: 0 8px 32px rgba(12, 60, 38, 0.06);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 .hp-founder-left {
   flex-shrink: 0;
@@ -9056,12 +9065,12 @@ textarea {
   margin: 4px 0 2px;
   font-size: 28px;
   font-weight: 800;
-  color: var(--green-900);
+  color: #fff;
 }
 .hp-founder-role {
   margin: 0 0 16px;
   font-size: 15px;
-  color: var(--gold-600);
+  color: var(--gold-400);
   font-weight: 600;
 }
 .hp-founder-divider {
@@ -9075,7 +9084,7 @@ textarea {
   margin: 0 0 12px;
   font-size: 15px;
   line-height: 1.75;
-  color: var(--text);
+  color: rgba(255, 255, 255, 0.7);
 }
 .hp-founder-bio:last-child {
   margin-bottom: 0;
