@@ -102,7 +102,7 @@ export default async function SearchPage({
           <span className="search-hero-badge search-hero-badge-gold">SABEEL-UL-ILM</span>
           <span className="search-hero-badge search-hero-badge-light">🔍 Search</span>
         </div>
-        <h1>Search Resources</h1>
+        <h1 className="search-hero-title">Search Resources</h1>
         <p className="search-hero-sub">
           Find classes, subjects, lessons, videos, and notes across the entire Dars-e-Nizami curriculum.
         </p>
