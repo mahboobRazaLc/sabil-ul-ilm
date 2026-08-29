@@ -6,6 +6,12 @@ import { db } from "@/lib/db";
 import { Navbar } from "@/components/navbar";
 import { LangText } from "@/components/lang-text";
 import { getOptionalUser } from "@/lib/auth/authorization";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Ask a Question — Sabeel-ul-Ilm",
+  description: "Get answers from qualified Islamic scholars. Ask questions about Dars-e-Nizami subjects, Fiqh, Hadith, Arabic grammar, and more.",
+};
 
 export default async function QuestionsPage({
   searchParams,

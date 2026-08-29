@@ -7,8 +7,23 @@ import { getOptionalUser } from "@/lib/auth/authorization";
 import { toggleProgressCompleted } from "@/app/actions";
 import { getEmbedUrl } from "@/lib/video-embed";
 import { getFileUrl } from "@/lib/storage";
+import type { Metadata } from "next";
 
 export const revalidate = 60;
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const video = await db.video.findUnique({
+    where: { id, status: "PUBLISHED" },
+    include: { book: { include: { class: true, subject: true } } },
+  });
+  if (!video) return { title: "Video Not Found — Sabeel-ul-Ilm" };
+  const className = video.book?.class ? ` | ${video.book.class.name}` : "";
+  return {
+    title: `${video.title}${className} — Sabeel-ul-Ilm`,
+    description: `Watch this video lecture: ${video.title}. Part of Dars-e-Nizami curriculum on Sabeel-ul-Ilm.`,
+  };
+}
 
 export default async function VideoPlayerPage({
   params,

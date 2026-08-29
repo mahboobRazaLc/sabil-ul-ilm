@@ -2,8 +2,14 @@ import Link from "next/link";
 import { db } from "@/lib/db";
 import { Navbar } from "@/components/navbar";
 import { LangText } from "@/components/lang-text";
+import type { Metadata } from "next";
 
 export const revalidate = 60;
+
+export const metadata: Metadata = {
+  title: "Search — Sabeel-ul-Ilm",
+  description: "Search through classes, books, video lectures, and notes. Find Dars-e-Nizami study materials instantly.",
+};
 
 export default async function SearchPage({
   searchParams,

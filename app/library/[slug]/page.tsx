@@ -9,8 +9,24 @@ import { submitQuestion, toggleProgressCompleted } from "@/app/actions";
 import { getClassDisplayName, getSubjectDisplayName } from "@/lib/constants";
 import { getEmbedUrl } from "@/lib/video-embed";
 import { getFileUrl } from "@/lib/storage";
+import type { Metadata } from "next";
 
 export const revalidate = 60;
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const book = await db.book.findUnique({
+    where: { slug, status: "PUBLISHED" },
+    include: { class: true, subject: true },
+  });
+  if (!book) return { title: "Lesson Not Found — Sabeel-ul-Ilm" };
+  const className = getClassDisplayName(book.class.slug, book.class.name);
+  const subjectName = book.subject ? getSubjectDisplayName(book.subject.slug, book.subject.name) : "";
+  return {
+    title: `${book.title} — ${className}${subjectName ? " " + subjectName : ""} | Sabeel-ul-Ilm`,
+    description: book.description || `Watch video lectures and download PDF notes for ${book.title}. Part of ${className} Dars-e-Nizami curriculum.`,
+  };
+}
 
 export default async function BookDetailPage({
   params,

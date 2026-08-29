@@ -3,6 +3,12 @@ export const revalidate = 60;
 import { db } from "@/lib/db";
 import { Navbar } from "@/components/navbar";
 import { LangText } from "@/components/lang-text";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Video Lectures — Sabeel-ul-Ilm",
+  description: "Watch free video lectures on Dars-e-Nizami subjects — Nahw, Sarf, Fiqh, Hadith, Tafseer, and more. Expert Islamic scholars teaching online.",
+};
 
 export default async function VideosPage({
   searchParams,

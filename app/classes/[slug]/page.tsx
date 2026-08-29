@@ -6,8 +6,23 @@ import { LangText } from "@/components/lang-text";
 import { ShareButtons } from "@/components/share-buttons";
 import { getClassDisplayName, getSubjectDisplayName } from "@/lib/constants";
 import { getFileUrl } from "@/lib/storage";
+import type { Metadata } from "next";
 
 export const revalidate = 60;
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const cls = await db.class.findUnique({
+    where: { slug, status: "PUBLISHED" },
+    include: { subjects: true },
+  });
+  if (!cls) return { title: "Class Not Found — Sabeel-ul-Ilm" };
+  const className = getClassDisplayName(cls.slug, cls.name);
+  return {
+    title: `${className} — Sabeel-ul-Ilm`,
+    description: `Explore ${className} Dars-e-Nizami curriculum — ${cls.subjects.length} subjects, video lectures, and PDF notes on Sabeel-ul-Ilm.`,
+  };
+}
 
 export default async function ClassDetailPage({
   params,

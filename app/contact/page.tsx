@@ -2,8 +2,14 @@ import Link from "next/link";
 import { Navbar } from "@/components/navbar";
 import { getOptionalUser } from "@/lib/auth/authorization";
 import { submitQuestion } from "@/app/actions";
+import type { Metadata } from "next";
 
 export const revalidate = 60;
+
+export const metadata: Metadata = {
+  title: "Contact Us — Sabeel-ul-Ilm",
+  description: "Get in touch with the Sabeel-ul-Ilm team. Send questions, feedback, or inquiries about our Islamic education platform.",
+};
 
 export default async function ContactPage({
   searchParams,

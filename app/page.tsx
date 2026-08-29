@@ -4,8 +4,18 @@ import { db } from "@/lib/db";
 import { Navbar } from "@/components/navbar";
 import { LangText } from "@/components/lang-text";
 import { getOptionalUser } from "@/lib/auth/authorization";
+import type { Metadata } from "next";
 
 import { CLASS_NAMES } from "@/lib/constants";
+
+export const metadata: Metadata = {
+  title: "Sabeel-ul-Ilm — Free Dars-e-Nizami Online Platform",
+  description: "Access the complete Dars-e-Nizami curriculum — free video lectures, PDF notes, books, and teacher support for Islamic students worldwide.",
+  openGraph: {
+    title: "Sabeel-ul-Ilm — Free Dars-e-Nizami Online Platform",
+    description: "Free video lectures, PDF notes, books, and teacher support for Dars-e-Nizami students.",
+  },
+};
 
 export default async function HomePage() {
   const [classes, recentBooks, user] = await Promise.all([

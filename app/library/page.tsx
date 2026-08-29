@@ -4,6 +4,12 @@ import { db } from "@/lib/db";
 import { Navbar } from "@/components/navbar";
 import { LangText } from "@/components/lang-text";
 import { getFileUrl } from "@/lib/storage";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Library — Sabeel-ul-Ilm",
+  description: "Browse and download free Islamic books, PDF notes, and video lessons for Dars-e-Nizami curriculum. Complete learning resources for students.",
+};
 
 export default async function LibraryPage({
   searchParams,
