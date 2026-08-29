@@ -3,7 +3,7 @@ import { Navbar } from "@/components/navbar";
 import { getOptionalUser } from "@/lib/auth/authorization";
 import { submitQuestion } from "@/app/actions";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export default async function ContactPage({
   searchParams,

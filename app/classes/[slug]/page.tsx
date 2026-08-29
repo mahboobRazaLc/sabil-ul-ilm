@@ -7,7 +7,7 @@ import { ShareButtons } from "@/components/share-buttons";
 import { getClassDisplayName, getSubjectDisplayName } from "@/lib/constants";
 import { getFileUrl } from "@/lib/storage";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export default async function ClassDetailPage({
   params,

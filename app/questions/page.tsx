@@ -1,5 +1,5 @@
 import Link from "next/link";
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 import { submitQuestion } from "@/app/actions";
 import { db } from "@/lib/db";
 

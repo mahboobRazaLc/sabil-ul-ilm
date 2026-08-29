@@ -1,5 +1,5 @@
 import Link from "next/link";
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 import { db } from "@/lib/db";
 import { Navbar } from "@/components/navbar";
 import { LangText } from "@/components/lang-text";
@@ -62,10 +62,18 @@ export default async function LibraryPage({
     <main className="public">
       <Navbar active="library" />
 
-      <section className="page-intro">
-        <p className="eyebrow">RESOURCE LIBRARY</p>
-        <h1>Books & Curriculum</h1>
-        <p>Explore lessons, study guides, and downloadable PDFs organized by class and subject.</p>
+      <section className="lib-hero">
+        <div className="lib-hero-content">
+          <div className="lib-hero-badges">
+            <span className="lib-hero-badge lib-hero-badge-gold">RESOURCE LIBRARY</span>
+            <span className="lib-hero-badge lib-hero-badge-light">📖 {books.length} Lessons</span>
+          </div>
+          <h1 className="lib-hero-title">Books & Curriculum</h1>
+          <p className="lib-hero-sub">
+            Explore lessons, study guides, and downloadable PDFs organized by class and subject.
+          </p>
+        </div>
+        <div className="lib-hero-icon">📚</div>
       </section>
 
       <section className="filters-bar">

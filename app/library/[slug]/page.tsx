@@ -10,7 +10,7 @@ import { getClassDisplayName, getSubjectDisplayName } from "@/lib/constants";
 import { getEmbedUrl } from "@/lib/video-embed";
 import { getFileUrl } from "@/lib/storage";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export default async function BookDetailPage({
   params,

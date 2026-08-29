@@ -4,7 +4,12 @@ import { Navbar } from "@/components/navbar";
 import { LangText } from "@/components/lang-text";
 import { getClassDisplayName } from "@/lib/constants";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
+
+export const metadata = {
+  title: "Classes — Sabeel-ul-Ilm",
+  description: "Browse the complete Dars-e-Nizami curriculum with structured subjects, video lessons, and PDF materials.",
+};
 
 export default async function ClassesPage() {
   const classes = await db.class.findMany({
@@ -26,13 +31,20 @@ export default async function ClassesPage() {
     <main className="public">
       <Navbar active="classes" />
 
-      <section className="page-intro">
-        <p className="eyebrow">DARS-E-NIZAMI CURRICULUM</p>
-        <h1>Classes</h1>
-        <p>
-          Browse the complete Dars-e-Nizami curriculum. Each class contains structured subjects and lessons with video and PDF materials.
-        </p>
-      </section>
+      {/* Premium Hero */}
+      <div className="cls-hero">
+        <div className="cls-hero-content">
+          <div className="cls-hero-badges">
+            <span className="cls-hero-badge cls-hero-badge-gold">DARS-E-NIZAMI CURRICULUM</span>
+            <span className="cls-hero-badge cls-hero-badge-light">📚 {classes.length} Classes</span>
+          </div>
+          <h1 className="cls-hero-title">Browse Classes</h1>
+          <p className="cls-hero-sub">
+            Structured curriculum with subjects, video lessons, and PDF materials for every level of Dars-e-Nizami study.
+          </p>
+        </div>
+        <div className="cls-hero-icon">📖</div>
+      </div>
 
       <div className="classes-grid">
         {classes.map((c) => {

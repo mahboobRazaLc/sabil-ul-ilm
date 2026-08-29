@@ -6,7 +6,7 @@ import { Navbar } from "@/components/navbar";
 import { ShareButtons } from "@/components/share-buttons";
 import { getFileUrl } from "@/lib/storage";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 type Props = { params: Promise<{ slug: string }> };
 

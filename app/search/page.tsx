@@ -3,7 +3,7 @@ import { db } from "@/lib/db";
 import { Navbar } from "@/components/navbar";
 import { LangText } from "@/components/lang-text";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export default async function SearchPage({
   searchParams,

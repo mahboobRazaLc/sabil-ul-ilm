@@ -1,5 +1,5 @@
 import Link from "next/link";
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 import { db } from "@/lib/db";
 import { Navbar } from "@/components/navbar";
 import { LangText } from "@/components/lang-text";
