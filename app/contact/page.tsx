@@ -109,7 +109,7 @@ export default async function ContactPage({
               <div className="c-info-item-icon">&#128231;</div>
               <div className="c-info-item-content">
                 <strong>Email</strong>
-                info@sabeelulilm.org
+                mahboobrazaaa@gmail.com
               </div>
             </div>
 
