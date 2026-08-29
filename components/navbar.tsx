@@ -25,7 +25,7 @@ export async function Navbar({ active }: { active?: "home" | "classes" | "librar
     <>
     <header className="public-nav">
       <Link className="brand-link" href="/">
-        <img src="/logo.svg" alt="Sabeel-ul-Ilm" className="brand-logo" />
+        <img src="/logo.png" alt="Sabeel-ul-Ilm" className="brand-logo" />
         <span className="brand-text-group">
           <span className="brand-name">Sabeel-ul-Ilm</span>
           <span className="brand-arabic">سبیلُ العلم</span>
