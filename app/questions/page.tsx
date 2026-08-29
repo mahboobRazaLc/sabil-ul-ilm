@@ -66,7 +66,7 @@ export default async function QuestionsPage({
                 <label className="q-form-label">
                   Your Name <span className="q-form-label-hint">(optional)</span>
                 </label>
-                <input name="name" maxLength={80} placeholder="e.g. Alex" className="q-form-input" />
+                <input name="name" maxLength={80} placeholder="e.g. Ahmed" className="q-form-input" />
               </div>
               <div>
                 <label className="q-form-label">

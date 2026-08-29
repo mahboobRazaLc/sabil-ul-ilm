@@ -91,7 +91,7 @@ export default async function NoteDetailPage({ params }: Props) {
         </div>
 
         <ShareButtons
-          url={`${process.env.AUTH_URL || "https://sabil-ul-ilm.vercel.app"}/notes/${note.slug}`}
+          url={`${process.env.AUTH_URL || "https://sabeel-ul-ilm.vercel.app"}/notes/${note.slug}`}
           title={`${note.title} | Sabeel-ul-Ilm`}
         />
       </div>

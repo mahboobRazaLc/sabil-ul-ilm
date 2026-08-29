@@ -110,7 +110,7 @@ export default async function ClassDetailPage({
             </span>
           </div>
           <ShareButtons
-            url={`${process.env.AUTH_URL || "https://sabil-ul-ilm.vercel.app"}/classes/${cls.slug}`}
+            url={`${process.env.AUTH_URL || "https://sabeel-ul-ilm.vercel.app"}/classes/${cls.slug}`}
             title={`${classNames.ar ? classNames.ar + " — " : ""}${cls.name} | Sabeel-ul-Ilm`}
           />
         </div>
