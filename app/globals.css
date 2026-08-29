@@ -6256,6 +6256,90 @@ textarea {
   transform: translateY(0);
 }
 
+/* ── Profile View Mode ─────────────────────── */
+.profile-view {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.profile-view-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+.profile-view-row:last-of-type {
+  border-bottom: none;
+}
+.profile-view-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.profile-view-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--green-900);
+  text-align: right;
+}
+.profile-edit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, var(--green-800), var(--green-700));
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  width: fit-content;
+}
+.profile-edit-btn:hover {
+  background: linear-gradient(135deg, var(--green-700), var(--green-600));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
+}
+.profile-cancel-btn {
+  width: 100%;
+  padding: 12px 28px;
+  background: var(--white);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  margin-top: 8px;
+}
+.profile-cancel-btn:hover {
+  background: #f9fafb;
+  border-color: var(--green-300, #86efac);
+}
+@media (min-width: 640px) {
+  .profile-submit-wrap {
+    display: flex;
+    gap: 10px;
+  }
+  .profile-submit-wrap .profile-submit-btn {
+    flex: 1;
+  }
+  .profile-submit-wrap .profile-cancel-btn {
+    width: auto;
+    margin-top: 0;
+    padding: 13px 28px;
+  }
+}
+
 /* ── Profile Account Details ─────────────────── */
 .profile-account-grid {
   display: grid;

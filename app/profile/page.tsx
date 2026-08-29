@@ -3,17 +3,18 @@ import { requireUser } from "@/lib/auth/authorization";
 import { db } from "@/lib/db";
 import { Navbar } from "@/components/navbar";
 import { LangText } from "@/components/lang-text";
-import { updateStudentProfile } from "@/app/actions";
+import { ProfileEditForm } from "@/components/profile-edit-form";
 
 export const dynamic = "force-dynamic";
 
 export default async function StudentProfilePage({
   searchParams,
 }: {
-  searchParams: Promise<{ notice?: string }>;
+  searchParams: Promise<{ notice?: string; edit?: string }>;
 }) {
   const [session, params] = await Promise.all([requireUser(), searchParams]);
   const userId = session.user!.id!;
+  const isEditing = params.edit === "true";
 
   const [user, classes] = await Promise.all([
     db.user.findUnique({
@@ -51,6 +52,7 @@ export default async function StudentProfilePage({
     <main className="public">
       <Navbar active="profile" />
 
+      {/* Profile Hero */}
       <div className="profile-hero">
         <div className="profile-hero-inner">
           <div className="profile-avatar">{initials}</div>
@@ -72,94 +74,50 @@ export default async function StudentProfilePage({
       )}
 
       <div className="profile-grid">
+        {/* Left: Personal Info or Edit Form */}
         <section className="profile-card">
           <div className="profile-card-header">
-            <div className="profile-card-icon profile-card-icon-green">&#9998;</div>
-            <h2 className="profile-card-title">Personal Information</h2>
+            <div className="profile-card-icon profile-card-icon-green">
+              {isEditing ? "✎" : "👤"}
+            </div>
+            <h2 className="profile-card-title">
+              {isEditing ? "Edit Profile" : "Personal Information"}
+            </h2>
           </div>
-          <form action={updateStudentProfile} className="profile-form">
-            <div>
-              <label className="profile-field-label">
-                Full Name <span className="required">*</span>
-              </label>
-              <input
-                name="name"
-                defaultValue={user.name || ""}
-                required
-                minLength={2}
-                maxLength={100}
-                className="profile-field-input"
-              />
+
+          {isEditing ? (
+            <ProfileEditForm
+              user={{ name: user.name, email: user.email, classId: user.classId }}
+              classes={classes}
+            />
+          ) : (
+            <div className="profile-view">
+              <div className="profile-view-row">
+                <span className="profile-view-label">Full Name</span>
+                <span className="profile-view-value">{user.name || "—"}</span>
+              </div>
+              <div className="profile-view-row">
+                <span className="profile-view-label">Email Address</span>
+                <span className="profile-view-value">{user.email}</span>
+              </div>
+              <div className="profile-view-row">
+                <span className="profile-view-label">Enrolled Class</span>
+                <span className="profile-view-value">
+                  {user.class ? <LangText>{user.class.name}</LangText> : "Not Enrolled"}
+                </span>
+              </div>
+              <div className="profile-view-row">
+                <span className="profile-view-label">Role</span>
+                <span className="profile-view-value">{user.role}</span>
+              </div>
+              <Link href="/profile?edit=true" className="profile-edit-btn">
+                ✎ Edit Profile
+              </Link>
             </div>
-
-            <div>
-              <label className="profile-field-label">
-                Email Address <span className="profile-field-hint">(Primary Login)</span>
-              </label>
-              <input
-                type="email"
-                defaultValue={user.email}
-                disabled
-                className="profile-field-input"
-              />
-            </div>
-
-            <div className="full">
-              <label className="profile-field-label">
-                Enrolled Class / Grade Level
-              </label>
-              <select name="classId" defaultValue={user.classId || ""} className="profile-field-select">
-                <option value="">No specific class selected</option>
-                {classes.map((c) => (
-                  <option key={c.id} value={c.id}>
-                    {c.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <hr className="profile-divider" />
-
-            <h3 className="profile-section-label">Change Password (Optional)</h3>
-            <p className="profile-section-desc">
-              Leave blank if you don&apos;t wish to change your password.
-            </p>
-
-            <div>
-              <label className="profile-field-label">
-                Current Password
-              </label>
-              <input
-                name="currentPassword"
-                type="password"
-                placeholder="Required only to set new password"
-                autoComplete="current-password"
-                className="profile-field-input"
-              />
-            </div>
-
-            <div>
-              <label className="profile-field-label">
-                New Password <span className="profile-field-hint">(min 8 characters)</span>
-              </label>
-              <input
-                name="newPassword"
-                type="password"
-                minLength={8}
-                placeholder="New strong password"
-                autoComplete="new-password"
-                className="profile-field-input"
-              />
-            </div>
-
-            <div className="profile-submit-wrap">
-              <button className="profile-submit-btn" type="submit">
-                Save Changes
-              </button>
-            </div>
-          </form>
+          )}
         </section>
 
+        {/* Right: Account Details */}
         <section className="profile-card" style={{ height: "fit-content" }}>
           <div className="profile-card-header">
             <div className="profile-card-icon profile-card-icon-gold">&#9881;</div>
