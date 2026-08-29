@@ -4,6 +4,7 @@ import { signOut } from "@/auth";
 import { db } from "@/lib/db";
 import { NotificationBell } from "@/components/notification-bell";
 import { MobileTabBar } from "@/components/mobile-tab-bar";
+import { DonationButton } from "@/components/donation-button";
 
 export async function Navbar({ active }: { active?: "home" | "classes" | "library" | "videos" | "questions" | "dashboard" | "profile" | "search" | "contact" | "notes" }) {
   const user = await getOptionalUser();
@@ -51,6 +52,8 @@ export async function Navbar({ active }: { active?: "home" | "classes" | "librar
         </Link>
 
         <span className="nav-divider" />
+
+        <DonationButton />
 
         {isAdminOrEditor && (
           <Link
