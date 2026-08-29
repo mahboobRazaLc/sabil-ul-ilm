@@ -8841,6 +8841,11 @@ textarea {
   background: linear-gradient(135deg, var(--green-100) 0%, var(--green-200) 100%);
   gap: 8px;
 }
+.founder-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .founder-image-icon {
   font-size: 48px;
   opacity: 0.6;

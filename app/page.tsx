@@ -216,10 +216,11 @@ export default async function HomePage() {
       <section className="founder-section">
         <div className="founder-card">
           <div className="founder-image-wrap">
-            <div className="founder-image-placeholder">
-              <span className="founder-image-icon">🕌</span>
-              <span className="founder-image-text">Photo coming soon</span>
-            </div>
+            <img
+              src="/founder.jpg"
+              alt="Mahboob Raza"
+              className="founder-image"
+            />
           </div>
           <div className="founder-content">
             <p className="eyebrow">FOUNDER</p>
