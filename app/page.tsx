@@ -212,6 +212,32 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* Founder Section */}
+      <section className="founder-section">
+        <div className="founder-card">
+          <div className="founder-image-wrap">
+            <div className="founder-image-placeholder">
+              <span className="founder-image-icon">🕌</span>
+              <span className="founder-image-text">Photo coming soon</span>
+            </div>
+          </div>
+          <div className="founder-content">
+            <p className="eyebrow">FOUNDER</p>
+            <h2 className="founder-name">Mahboob Raza</h2>
+            <p className="founder-title">Founder, Sabeel-ul-Ilm</p>
+            <p className="founder-bio">
+              Mahboob Raza is a Hafiz-e-Qur&apos;an and currently pursuing his Islamic education at
+              Al Jamiatul Ashrafia, Mubarakpur, Azamgarh, in the Salisa (third-year) class.
+            </p>
+            <p className="founder-bio">
+              With a passion for knowledge and education, he founded Sabeel-ul-Ilm to connect
+              traditional learning with modern technology and make beneficial knowledge more
+              accessible to students.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="site-footer">
         <p>

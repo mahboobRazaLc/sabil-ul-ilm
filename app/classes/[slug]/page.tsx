@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { db } from "@/lib/db";
 import { Navbar } from "@/components/navbar";
 import { LangText } from "@/components/lang-text";
+import { ShareButtons } from "@/components/share-buttons";
 import { getClassDisplayName, getSubjectDisplayName } from "@/lib/constants";
 import { getFileUrl } from "@/lib/storage";
 
@@ -108,6 +109,10 @@ export default async function ClassDetailPage({
               📖 {cls.books.length} Lesson{cls.books.length === 1 ? "" : "s"}
             </span>
           </div>
+          <ShareButtons
+            url={`${process.env.AUTH_URL || "https://sabil-ul-ilm.vercel.app"}/classes/${cls.slug}`}
+            title={`${classNames.ar ? classNames.ar + " — " : ""}${cls.name} | Sabeel-ul-Ilm`}
+          />
         </div>
       </div>
 

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { db } from "@/lib/db";
 import { Navbar } from "@/components/navbar";
+import { ShareButtons } from "@/components/share-buttons";
 import { getFileUrl } from "@/lib/storage";
 
 export const dynamic = "force-dynamic";
@@ -88,6 +89,11 @@ export default async function NoteDetailPage({ params }: Props) {
             ← Back to Notes
           </Link>
         </div>
+
+        <ShareButtons
+          url={`${process.env.AUTH_URL || "https://sabil-ul-ilm.vercel.app"}/notes/${note.slug}`}
+          title={`${note.title} | Sabeel-ul-Ilm`}
+        />
       </div>
 
       {/* PDF Viewer */}
