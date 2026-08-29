@@ -8587,7 +8587,7 @@ textarea {
   overflow: hidden;
   border-radius: var(--radius-xl);
   margin: 0 0 60px;
-  background: linear-gradient(160deg, #0a2e1c 0%, #0f5132 40%, #145a3a 70%, #0a2e1c 100%);
+  background: linear-gradient(160deg, #071e12 0%, #0a3d24 30%, #0f5132 60%, #071e12 100%);
   border: 1px solid rgba(212, 160, 23, 0.15);
   min-height: 480px;
 }
@@ -8632,6 +8632,19 @@ textarea {
   flex-direction: column;
   align-items: center;
   text-align: center;
+}
+.hp-hero-glass {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-xl);
+  padding: 40px 48px;
+  max-width: 680px;
+  width: 100%;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 .hp-hero-badge {
   display: inline-flex;
@@ -9135,6 +9148,11 @@ textarea {
 @media (max-width: 768px) {
   .hp-hero-content {
     padding: 48px 24px 56px;
+  }
+  .hp-hero-glass {
+    padding: 28px 20px;
+    max-width: 100%;
+    border-radius: var(--radius-lg);
   }
   .hp-hero-stats {
     flex-direction: column;

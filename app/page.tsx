@@ -66,6 +66,7 @@ export default async function HomePage() {
           <div className="hp-hero-grid" />
         </div>
         <div className="hp-hero-content">
+          <div className="hp-hero-glass">
           <p className="hp-hero-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
           <div className="hp-hero-divider" />
           <div className="hp-hero-badge">
@@ -104,6 +105,7 @@ export default async function HomePage() {
               <span className="hp-hero-stat-icon">❓</span>
               <span className="hp-hero-stat-text">Teacher Support</span>
             </div>
+          </div>
           </div>
         </div>
       </section>
