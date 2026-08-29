@@ -33,6 +33,8 @@ export async function Navbar({ active }: { active?: "home" | "classes" | "librar
         </span>
       </Link>
 
+      <DonationButton />
+
       {/* Desktop nav only — hamburger removed, mobile uses bottom tab bar */}
       <nav>
         <Link href="/" style={active === "home" ? { color: "var(--green-800)", fontWeight: 700, background: "var(--green-100)" } : {}}>
@@ -52,8 +54,6 @@ export async function Navbar({ active }: { active?: "home" | "classes" | "librar
         </Link>
 
         <span className="nav-divider" />
-
-        <DonationButton />
 
         {isAdminOrEditor && (
           <Link

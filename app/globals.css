@@ -9510,6 +9510,7 @@ textarea {
     width: 36px;
     height: 36px;
     justify-content: center;
+    margin-left: auto;
   }
   .donation-modal {
     padding: 28px 24px;
