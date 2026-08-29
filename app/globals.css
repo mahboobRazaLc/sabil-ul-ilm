@@ -430,6 +430,8 @@ textarea {
   width: 38px;
   height: 38px;
   flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
 }
 .brand-text-group {
   display: flex;
@@ -8249,6 +8251,8 @@ textarea {
   .brand-logo {
     width: 32px;
     height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
   }
   .brand-name {
     font-size: 15px;
@@ -9081,6 +9085,8 @@ textarea {
   width: 44px;
   height: 44px;
   flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
 }
 .hp-footer-name {
   font-size: 22px;
