@@ -273,6 +273,7 @@ export default async function HomePage() {
       <footer className="hp-footer">
         <div className="hp-footer-inner">
           <div className="hp-footer-brand">
+            <img src="/logo.svg" alt="Sabeel-ul-Ilm" className="hp-footer-logo" />
             <span className="hp-footer-name">Sabeel-ul-Ilm</span>
             <span className="hp-footer-arabic">سبیلُ العلم</span>
           </div>

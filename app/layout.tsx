@@ -28,6 +28,9 @@ const amiri = Amiri({
 export const metadata: Metadata = {
   title: "Sabeel-ul-Ilm — Dars-e-Nizami Online",
   description: "A premium Islamic learning platform for Dars-e-Nizami students. Access curriculum classes, video lessons, PDF resources, and teacher support.",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

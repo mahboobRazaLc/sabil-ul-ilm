@@ -25,8 +25,11 @@ export async function Navbar({ active }: { active?: "home" | "classes" | "librar
     <>
     <header className="public-nav">
       <Link className="brand-link" href="/">
-        <span>Sabeel-ul-Ilm</span>
-        <span className="brand-arabic">سبیلُ العلم</span>
+        <img src="/logo.svg" alt="Sabeel-ul-Ilm" className="brand-logo" />
+        <span className="brand-text-group">
+          <span className="brand-name">Sabeel-ul-Ilm</span>
+          <span className="brand-arabic">سبیلُ العلم</span>
+        </span>
       </Link>
 
       {/* Desktop nav only — hamburger removed, mobile uses bottom tab bar */}
