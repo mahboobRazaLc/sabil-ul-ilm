@@ -8968,7 +8968,7 @@ textarea {
 
 /* ── CTA Card (Ask Teacher) ──────────────────── */
 .hp-cta-card {
-  background: rgba(15, 81, 50, 0.4);
+  background: rgba(10, 46, 28, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-radius: var(--radius-xl);
@@ -9002,7 +9002,7 @@ textarea {
   margin: 0;
   font-size: 15px;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.8);
   max-width: 440px;
 }
 .hp-cta-btn {
@@ -9032,10 +9032,10 @@ textarea {
   display: flex;
   gap: 48px;
   align-items: center;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(10, 46, 28, 0.8);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(212, 160, 23, 0.12);
   border-radius: var(--radius-xl);
   padding: 48px;
   box-shadow:
@@ -9084,7 +9084,7 @@ textarea {
   margin: 0 0 12px;
   font-size: 15px;
   line-height: 1.75;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.85);
 }
 .hp-founder-bio:last-child {
   margin-bottom: 0;
