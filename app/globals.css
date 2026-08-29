@@ -8115,17 +8115,8 @@ textarea {
 
 /* ── Mobile Responsive Fixes ─────────────────── */
 
-/* Always hidden */
-.nav-toggle-input {
-  display: none;
-}
-/* Hidden on desktop */
-.nav-toggle-label {
-  display: none;
-}
-
 @media (max-width: 640px) {
-  /* ── Navbar Hamburger ──────────────────────── */
+  /* ── Navbar Mobile ──────────────────────── */
   .public-nav {
     flex-direction: row;
     flex-wrap: wrap;
@@ -8138,74 +8129,7 @@ textarea {
   .public-nav .brand-arabic {
     display: none;
   }
-  .nav-toggle-label {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding: 8px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    margin-left: auto;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .nav-toggle-label span {
-    display: block;
-    width: 20px;
-    height: 2px;
-    background: var(--text-primary);
-    border-radius: 1px;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-  }
-  .nav-toggle-input:checked + .nav-toggle-label span:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
-  }
-  .nav-toggle-input:checked + .nav-toggle-label span:nth-child(2) {
-    opacity: 0;
-  }
-  .nav-toggle-input:checked + .nav-toggle-label span:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
-  }
-  .public-nav nav {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    gap: 2px;
-    padding-top: 10px;
-    border-top: 1px solid var(--border-light);
-    margin-top: 6px;
-  }
-  .public-nav:has(.nav-toggle-input:checked) nav {
-    display: flex;
-  }
-  .public-nav nav a {
-    padding: 10px 12px;
-    font-size: 15px;
-    border-radius: var(--radius-sm);
-    width: 100%;
-    text-align: left;
-  }
-  .public-nav nav a:hover {
-    background: var(--green-100);
-  }
-  .nav-divider {
-    display: none;
-  }
-  .public-nav nav form {
-    width: 100%;
-  }
-  .public-nav nav form button {
-    width: 100%;
-    text-align: left;
-    padding: 10px 12px;
-    font-size: 15px;
-    border-radius: var(--radius-sm);
-  }
-  .public-nav nav .notif-wrapper {
-    width: 100%;
-  }
-
-  /* ── Auth Forms Mobile ──────────────────────── */
+  /* Auth Forms Mobile ──────────────────────── */
   .auth-form-card {
     margin: 20px 16px !important;
     padding: 28px 20px !important;
@@ -9200,6 +9124,78 @@ textarea {
   .share-btn {
     width: 36px;
     height: 36px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   MOBILE BOTTOM TAB BAR
+   ══════════════════════════════════════════════════════════════════ */
+.mobile-tab-bar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-tab-bar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background: linear-gradient(180deg, #0d4a35 0%, var(--green-900) 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 6px 0;
+    padding-bottom: calc(6px + env(safe-area-inset-bottom, 0px));
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 -2px 16px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .mobile-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    text-decoration: none;
+    color: #94a3b8;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: var(--radius-sm);
+    transition: color 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    min-width: 52px;
+  }
+
+  .mobile-tab-active {
+    color: var(--gold-400) !important;
+  }
+
+  .mobile-tab-active svg {
+    filter: drop-shadow(0 0 6px rgba(212, 160, 23, 0.4));
+  }
+
+  .mobile-tab-label {
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+
+  /* Add bottom padding to main content so it doesn't overlap tab bar */
+  .public {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Hide the hamburger menu — no longer needed */
+  .nav-toggle-input,
+  .nav-toggle-label {
+    display: none !important;
+  }
+
+  /* Hide desktop nav links on mobile — bottom tab bar replaces them */
+  .public-nav > nav {
+    display: none !important;
   }
 }
 

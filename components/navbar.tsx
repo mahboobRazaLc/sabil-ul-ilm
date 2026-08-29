@@ -3,6 +3,7 @@ import { getOptionalUser } from "@/lib/auth/authorization";
 import { signOut } from "@/auth";
 import { db } from "@/lib/db";
 import { NotificationBell } from "@/components/notification-bell";
+import { MobileTabBar } from "@/components/mobile-tab-bar";
 
 export async function Navbar({ active }: { active?: "home" | "classes" | "library" | "videos" | "questions" | "dashboard" | "profile" | "search" | "contact" | "notes" }) {
   const user = await getOptionalUser();
@@ -21,17 +22,14 @@ export async function Navbar({ active }: { active?: "home" | "classes" | "librar
   }
 
   return (
+    <>
     <header className="public-nav">
       <Link className="brand-link" href="/">
         <span>Sabeel-ul-Ilm</span>
         <span className="brand-arabic">سبیلُ العلم</span>
       </Link>
 
-      <input type="checkbox" id="nav-toggle" className="nav-toggle-input" />
-      <label htmlFor="nav-toggle" className="nav-toggle-label" aria-label="Toggle navigation">
-        <span /><span /><span />
-      </label>
-
+      {/* Desktop nav only — hamburger removed, mobile uses bottom tab bar */}
       <nav>
         <Link href="/" style={active === "home" ? { color: "var(--green-800)", fontWeight: 700, background: "var(--green-100)" } : {}}>
           Home
@@ -108,5 +106,7 @@ export async function Navbar({ active }: { active?: "home" | "classes" | "librar
         )}
       </nav>
     </header>
+    <MobileTabBar isLoggedIn={!!user} />
+    </>
   );
 }
