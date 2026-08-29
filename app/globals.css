@@ -8661,14 +8661,20 @@ textarea {
 }
 .hp-hero-bismillah {
   font-family: var(--font-amiri), "Amiri", var(--font-nastaliq), var(--font-arabic), serif;
-  font-size: clamp(24px, 3.5vw, 36px);
+  font-size: clamp(16px, 2vw, 20px);
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.85);
-  margin: 0 0 20px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 12px;
   direction: rtl;
-  line-height: 2;
+  line-height: 1.8;
   letter-spacing: 0.02em;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+.hp-hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold-400), transparent);
+  margin: 0 auto 20px;
+  border-radius: 2px;
 }
 .hp-hero-title {
   margin: 0 0 20px;

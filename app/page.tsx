@@ -66,11 +66,12 @@ export default async function HomePage() {
           <div className="hp-hero-grid" />
         </div>
         <div className="hp-hero-content">
+          <p className="hp-hero-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
+          <div className="hp-hero-divider" />
           <div className="hp-hero-badge">
             <span className="hp-hero-badge-dot" />
             DARS-E-NIZAMI
           </div>
-          <p className="hp-hero-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
           <h1 className="hp-hero-title">
             <span className="hp-hero-brand">Sabeel-ul-Ilm</span>
             <span className="hp-hero-arabic">سبیلُ العلم</span>
