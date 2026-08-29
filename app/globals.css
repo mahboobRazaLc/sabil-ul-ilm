@@ -9227,6 +9227,7 @@ textarea {
 .cls-hero,
 .notes-hero,
 .videos-hero,
+.search-hero,
 .lib-hero {
   position: relative;
   overflow: hidden;
@@ -9242,6 +9243,7 @@ textarea {
 .cls-hero::before,
 .notes-hero::before,
 .videos-hero::before,
+.search-hero::before,
 .lib-hero::before {
   content: "";
   position: absolute;
