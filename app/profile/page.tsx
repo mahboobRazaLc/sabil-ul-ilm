@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { requireUser } from "@/lib/auth/authorization";
+import { signOut } from "@/auth";
 import { db } from "@/lib/db";
 import { Navbar } from "@/components/navbar";
 import { LangText } from "@/components/lang-text";
@@ -162,6 +163,18 @@ export default async function StudentProfilePage({
             <Link href="/dashboard" className="profile-dashboard-btn">
               &#8592; Return to Dashboard
             </Link>
+
+            <form
+              action={async () => {
+                "use server";
+                await signOut({ redirectTo: "/" });
+              }}
+              className="profile-logout-form"
+            >
+              <button type="submit" className="profile-logout-btn">
+                Sign out
+              </button>
+            </form>
           </div>
         </section>
       </div>

@@ -71,35 +71,39 @@ export async function Navbar({ active }: { active?: "home" | "classes" | "librar
         {user ? (
           <>
             <NotificationBell notifications={recentNotifications} unreadCount={unreadCount} />
-            <Link
-              href="/profile"
-              style={active === "profile" ? { color: "var(--green-800)", fontWeight: 700, background: "var(--green-100)" } : {}}
-            >
-              Profile
-            </Link>
-            <form
-              action={async () => {
-                "use server";
-                await signOut({ redirectTo: "/" });
-              }}
-            >
-              <button
-                type="submit"
-                style={{
-                  border: "1px solid var(--border)",
-                  background: "var(--white)",
-                  padding: "6px 12px",
-                  borderRadius: "var(--radius-sm)",
-                  fontSize: 13,
-                  fontWeight: 600,
-                  color: "var(--text-secondary)",
-                  cursor: "pointer",
-                  transition: "background 0.2s ease",
-                }}
-              >
-                Sign out
+            <div className="profile-dropdown-wrapper">
+              <button className="profile-dropdown-trigger" type="button">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+                <span>{user.name || "Profile"}</span>
               </button>
-            </form>
+              <div className="profile-dropdown-menu">
+                <Link href="/profile" className="profile-dropdown-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                  Profile
+                </Link>
+                <form
+                  action={async () => {
+                    "use server";
+                    await signOut({ redirectTo: "/" });
+                  }}
+                >
+                  <button type="submit" className="profile-dropdown-item profile-dropdown-logout">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" />
+                      <polyline points="16 17 21 12 16 7" />
+                      <line x1="21" y1="12" x2="9" y2="12" />
+                    </svg>
+                    Sign out
+                  </button>
+                </form>
+              </div>
+            </div>
           </>
         ) : (
           <Link

@@ -6440,6 +6440,28 @@ textarea {
 .profile-dashboard-btn:active {
   transform: translateY(0);
 }
+.profile-logout-form {
+  margin-top: 8px;
+}
+.profile-logout-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 20px;
+  background: #fff;
+  color: #dc2626;
+  border: 1px solid #fca5a5;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.profile-logout-btn:hover {
+  background: #fef2f2;
+}
 .profile-notice {
   background: var(--green-100);
   border: 1px solid #9ddfba;
@@ -9296,6 +9318,85 @@ textarea {
   .share-btn {
     width: 36px;
     height: 36px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   PROFILE DROPDOWN
+   ══════════════════════════════════════════════════════════════════ */
+.profile-dropdown-wrapper {
+  position: relative;
+}
+
+.profile-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.profile-dropdown-trigger:hover {
+  background: var(--green-100);
+}
+
+.profile-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 160px;
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.profile-dropdown-wrapper:hover .profile-dropdown-menu {
+  display: block;
+}
+
+.profile-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-decoration: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.profile-dropdown-item:hover {
+  background: var(--green-100);
+}
+
+.profile-dropdown-logout {
+  color: #dc2626;
+  border-top: 1px solid var(--border-light);
+}
+
+.profile-dropdown-logout:hover {
+  background: #fef2f2;
+}
+
+@media (max-width: 768px) {
+  .profile-dropdown-wrapper {
+    display: none;
   }
 }
 

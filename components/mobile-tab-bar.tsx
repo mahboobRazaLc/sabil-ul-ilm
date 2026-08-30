@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { signOut } from "next-auth/react";
 
 interface MobileTabBarProps {
   isLoggedIn: boolean;
@@ -90,20 +89,6 @@ export function MobileTabBar({ isLoggedIn }: MobileTabBarProps) {
           </Link>
         );
       })}
-      {isLoggedIn && (
-        <button
-          onClick={() => signOut({ callbackUrl: "/" })}
-          className="mobile-tab"
-          style={{ background: "none", border: "none", cursor: "pointer" }}
-        >
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" />
-            <polyline points="16 17 21 12 16 7" />
-            <line x1="21" y1="12" x2="9" y2="12" />
-          </svg>
-          <span className="mobile-tab-label">Logout</span>
-        </button>
-      )}
     </nav>
   );
 }
