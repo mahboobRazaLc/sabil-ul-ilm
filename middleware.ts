@@ -33,8 +33,8 @@ export default auth(async (req) => {
       }
     }
 
-    // 3. Auth pages (/login, /register) when already logged in
-    if (pathname === "/login" || pathname === "/register") {
+    // 3. Auth pages (/login, /register, /forgot-password, /reset-password) when already logged in
+    if (pathname === "/login" || pathname === "/register" || pathname === "/forgot-password" || pathname === "/reset-password") {
       if (isAdminOrEditor) {
         return NextResponse.redirect(new URL("/admin/dashboard", req.nextUrl.origin));
       }
@@ -51,7 +51,7 @@ export default auth(async (req) => {
 });
 
 export const config = {
-  matcher: ["/admin/:path*", "/dashboard/:path*", "/profile/:path*", "/notifications/:path*", "/login", "/register"],
+  matcher: ["/admin/:path*", "/dashboard/:path*", "/profile/:path*", "/notifications/:path*", "/login", "/register", "/forgot-password", "/reset-password"],
 };
 
 

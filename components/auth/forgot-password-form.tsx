@@ -1,17 +1,11 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { signIn } from "next-auth/react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 
-export function LoginForm() {
-  const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl");
-  const notice = searchParams.get("notice");
-
+export function ForgotPasswordForm() {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
 
@@ -19,32 +13,24 @@ export function LoginForm() {
     event.preventDefault();
     setBusy(true);
     setError("");
+    setMessage("");
 
-    const result = await signIn("credentials", {
-      email,
-      password,
-      redirect: false,
-    });
-
-    if (result?.error) {
-      setError("Invalid email or password. Please verify your credentials.");
-      setBusy(false);
-    } else {
-      try {
-        const sessionRes = await fetch("/api/auth/session");
-        const session = await sessionRes.json();
-        const role = session?.user?.role;
-
-        if (callbackUrl) {
-          window.location.href = callbackUrl;
-        } else if (role === "ADMIN" || role === "EDITOR") {
-          window.location.href = "/admin/dashboard";
-        } else {
-          window.location.href = "/dashboard";
-        }
-      } catch {
-        window.location.href = callbackUrl || "/dashboard";
+    try {
+      const res = await fetch("/api/auth/forgot-password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (data.error) {
+        setError(data.error);
+      } else {
+        setMessage(data.message || "If an account exists with this email, you will receive a password reset link shortly.");
       }
+    } catch {
+      setError("Something went wrong. Please try again later.");
+    } finally {
+      setBusy(false);
     }
   }
 
@@ -69,14 +55,14 @@ export function LoginForm() {
           سبیلُ العلم
         </span>
         <h1 style={{ fontSize: 24, margin: "20px 0 4px", color: "var(--green-900)" }}>
-          Welcome Back
+          Forgot Password?
         </h1>
         <p style={{ fontSize: 14, color: "var(--text-muted)", margin: 0 }}>
-          Sign in to access your learning dashboard and materials.
+          Enter your email address and we&apos;ll send you a link to reset your password.
         </p>
       </div>
 
-      {notice && (
+      {message && (
         <div
           role="status"
           style={{
@@ -89,7 +75,7 @@ export function LoginForm() {
             marginBottom: 18,
           }}
         >
-          {notice}
+          {message}
         </div>
       )}
 
@@ -126,35 +112,13 @@ export function LoginForm() {
           />
         </div>
 
-        <div>
-          <label style={{ display: "block", fontSize: 14, fontWeight: 600, color: "var(--green-900)", marginBottom: 6 }}>
-            Password
-          </label>
-          <input
-            name="password"
-            type="password"
-            required
-            minLength={8}
-            autoComplete="current-password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="••••••••••••"
-          />
-        </div>
-
-        <div style={{ textAlign: "right" }}>
-          <Link href="/forgot-password" style={{ color: "var(--green-800)", fontWeight: 600, fontSize: 13 }}>
-            Forgot Password?
-          </Link>
-        </div>
-
         <button
           className="button"
           disabled={busy}
           type="submit"
           style={{ width: "100%", marginTop: 8, padding: "12px 18px", fontSize: 15 }}
         >
-          {busy ? "Signing in..." : "Sign In"}
+          {busy ? "Sending..." : "Send Reset Link"}
         </button>
       </form>
 
@@ -171,9 +135,9 @@ export function LoginForm() {
         }}
       >
         <div>
-          New student?{" "}
-          <Link href="/register" style={{ color: "var(--green-800)", fontWeight: 700 }}>
-            Create student account →
+          Remember your password?{" "}
+          <Link href="/login" style={{ color: "var(--green-800)", fontWeight: 700 }}>
+            Sign in here →
           </Link>
         </div>
         <div>
