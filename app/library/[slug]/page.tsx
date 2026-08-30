@@ -15,7 +15,7 @@ export const revalidate = 60;
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const book = await db.book.findUnique({
+  const book = await db.book.findFirst({
     where: { slug, status: "PUBLISHED" },
     include: { class: true, subject: true },
   });

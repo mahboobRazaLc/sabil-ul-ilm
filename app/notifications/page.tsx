@@ -101,7 +101,7 @@ export default async function NotificationsPage() {
                     </form>
                   )}
                   <Link
-                    href={n.targetUrl || `/dashboard#question-${n.questionId}`}
+                    href={n.targetUrl || (n.questionId ? `/dashboard#question-${n.questionId}` : "/dashboard")}
                     className="notif-page-btn-primary"
                   >
                     View

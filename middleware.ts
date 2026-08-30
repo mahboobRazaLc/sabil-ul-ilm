@@ -47,7 +47,9 @@ export default auth(async (req) => {
     return NextResponse.next();
   } catch (err) {
     console.error("[middleware] auth check failed:", err);
-    return NextResponse.next();
+    const loginUrl = new URL("/login", req.nextUrl.origin);
+    loginUrl.searchParams.set("callbackUrl", req.nextUrl.pathname);
+    return NextResponse.redirect(loginUrl);
   }
 });
 

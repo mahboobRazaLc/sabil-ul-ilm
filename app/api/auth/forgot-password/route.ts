@@ -43,7 +43,7 @@ export async function POST(req: Request) {
     });
 
     // Build the reset URL
-    const baseUrl = process.env.AUTH_URL || process.env.NEXTAUTH_URL || "http://localhost:3000";
+    const baseUrl = process.env.AUTH_URL || "https://sabil-ul-ilm.vercel.app";
     const resetUrl = `${baseUrl}/reset-password?token=${token}`;
 
     // Send the email

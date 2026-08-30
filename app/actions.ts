@@ -93,12 +93,16 @@ export async function deleteClass(form: FormData) {
   const id = String(form.get("id"));
   const books = await db.book.findMany({
     where: { classId: id },
-    include: { assets: true },
+    include: { assets: true, videos: true },
   });
   for (const book of books) {
     if (book.coverUrl) await removeUpload(book.coverUrl);
     for (const asset of book.assets) {
       await removeUpload(asset.storageKey);
+    }
+    for (const video of book.videos) {
+      if (video.storageKey) await removeUpload(video.storageKey);
+      if (video.thumbnail) await removeUpload(video.thumbnail);
     }
   }
   await db.class.delete({ where: { id } });
@@ -321,12 +325,16 @@ export async function deleteBook(form: FormData) {
   const id = String(form.get("id"));
   const book = await db.book.findUnique({
     where: { id },
-    include: { assets: true },
+    include: { assets: true, videos: true },
   });
   if (book) {
     if (book.coverUrl) await removeUpload(book.coverUrl);
     for (const asset of book.assets) {
       await removeUpload(asset.storageKey);
+    }
+    for (const video of book.videos) {
+      if (video.storageKey) await removeUpload(video.storageKey);
+      if (video.thumbnail) await removeUpload(video.thumbnail);
     }
     await db.book.delete({ where: { id } });
     await audit("DELETE", "Book", id);
@@ -447,14 +455,13 @@ export async function deleteVideo(form: FormData) {
 }
 
 export async function answerQuestion(form: FormData) {
-  await requireAdminUser();
+  const session = await requireAdminUser();
   const id = String(form.get("id"));
   const data = answerSchema.safeParse({
     answer: form.get("answer"),
     status: form.get("status"),
   });
   if (!data.success) return message("/admin/questions", data.error.issues[0]?.message ?? "Invalid answer.");
-  const session = await requireAdminUser();
   const user = await db.user.findUnique({
     where: { email: session.user!.email! },
     select: { id: true },
