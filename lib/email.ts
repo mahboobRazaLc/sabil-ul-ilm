@@ -1,12 +1,20 @@
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-const FROM_EMAIL = process.env.EMAIL_FROM || "Sabeel-ul-Ilm <onboarding@resend.dev>";
+const transporter = nodemailer.createTransport({
+  host: process.env.SMTP_HOST || "smtp.gmail.com",
+  port: Number(process.env.SMTP_PORT) || 587,
+  secure: false,
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
+  },
+});
 
 export async function sendPasswordResetEmail(email: string, resetUrl: string) {
-  await resend.emails.send({
-    from: FROM_EMAIL,
+  const fromEmail = process.env.EMAIL_FROM || process.env.SMTP_USER || "noreply@gmail.com";
+
+  await transporter.sendMail({
+    from: `"Sabeel-ul-Ilm" <${fromEmail}>`,
     to: email,
     subject: "Reset Your Password - Sabeel-ul-Ilm",
     html: `
