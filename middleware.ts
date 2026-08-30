@@ -33,8 +33,9 @@ export default auth(async (req) => {
       }
     }
 
-    // 3. Auth pages (/login, /register, /forgot-password, /reset-password) when already logged in
-    if (pathname === "/login" || pathname === "/register" || pathname === "/forgot-password" || pathname === "/reset-password") {
+    // 3. Auth pages (/login, /register, /forgot-password) when already logged in
+    // Note: /reset-password is NOT blocked — logged-in users need access via email link
+    if (pathname === "/login" || pathname === "/register" || pathname === "/forgot-password") {
       if (isAdminOrEditor) {
         return NextResponse.redirect(new URL("/admin/dashboard", req.nextUrl.origin));
       }
