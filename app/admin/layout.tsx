@@ -4,6 +4,7 @@ import { requireAdmin } from "@/lib/auth/authorization";
 
 const links: [string, string, string][] = [
   ["/admin/dashboard", "Overview", "📊"],
+  ["/admin/students", "Students", "👥"],
   ["/admin/classes", "Classes", "🏫"],
   ["/admin/subjects", "Subjects", "📋"],
   ["/admin/books", "Lessons", "📚"],
