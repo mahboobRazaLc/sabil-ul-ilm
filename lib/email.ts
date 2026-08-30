@@ -12,6 +12,7 @@ const transporter = nodemailer.createTransport({
 
 export async function sendPasswordResetEmail(email: string, resetUrl: string) {
   const fromEmail = process.env.EMAIL_FROM || process.env.SMTP_USER || "noreply@gmail.com";
+  const baseUrl = process.env.AUTH_URL || "https://sabil-ul-ilm.vercel.app";
 
   await transporter.sendMail({
     from: `"Sabeel-ul-Ilm" <${fromEmail}>`,
@@ -19,6 +20,11 @@ export async function sendPasswordResetEmail(email: string, resetUrl: string) {
     subject: "Reset Your Password - Sabeel-ul-Ilm",
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 500px; margin: 0 auto; padding: 32px;">
+        <div style="text-align: center; margin-bottom: 24px;">
+          <img src="${baseUrl}/logo.png" alt="Sabeel-ul-Ilm" width="60" height="60" style="border-radius: 12px;" />
+          <h2 style="color: #064e3b; margin: 12px 0 4px; font-size: 20px;">Sabeel-ul-Ilm</h2>
+          <p style="color: #9ca3af; font-size: 13px; margin: 0;">سبیلُ العلم</p>
+        </div>
         <h2 style="color: #064e3b; margin-bottom: 8px;">Password Reset Request</h2>
         <p style="color: #374151; font-size: 15px; line-height: 1.6;">
           We received a request to reset your password for your <strong>Sabeel-ul-Ilm</strong> account.
